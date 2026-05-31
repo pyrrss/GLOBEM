@@ -15,7 +15,7 @@ from data_loader.data_loader_dl import data_loader_np, prep_repo_np_dict_feature
 from data_loader.data_loader_ml import DatasetDict, DataRepo, DataRepo_tf
 from algorithm.base import DepressionDetectionClassifierBase
 from utils import network, path_definitions
-from tensorflow.python.data.ops.dataset_ops import FlatMapDataset
+from tensorflow.data import Dataset
 
 class DepressionDetectionClassifier_DL_erm(DepressionDetectionClassifierBase):
     """Basic ERM-based deep learning algorithm. Other dl classifier can extend this class"""
@@ -49,11 +49,11 @@ class DepressionDetectionClassifier_DL_erm(DepressionDetectionClassifierBase):
             # if a dictionary, each value should be a tf dataset
             self.flag_X_dict = True
             for k, v in X.items():
-                assert type(v) is FlatMapDataset
+                assert type(v) is Dataset
         else:
             # if not a directionary, itself should be tf dataset
             self.flag_X_dict = False
-            assert type(X) is FlatMapDataset
+            assert type(X) is Dataset
 
     def prep_eval_callbacks(self, X):
         """ Callback function for evaluation on train/val/test set """

@@ -11,7 +11,7 @@ from algorithm.dl_erm import DepressionDetectionAlgorithm_DL_erm
 from algorithm.dl_siamese import DepressionDetectionClassifier_DL_siamese
 from data_loader.data_loader_ml import DataRepo
 from utils import network, path_definitions, tf_metric_loss_64bit
-from tensorflow.python.data.ops.dataset_ops import FlatMapDataset
+from tensorflow.data import Dataset
 from sklearn.cluster import KMeans
 warnings.filterwarnings("ignore")
 
@@ -308,7 +308,7 @@ class DepressionDetectionClassifier_DL_clustering(DepressionDetectionClassifier_
         def _shuffle(self):
             np.random.shuffle(self.index_list)
         
-    def inspect_cluster(self, data: Dict[str, FlatMapDataset],
+    def inspect_cluster(self, data: Dict[str, Dataset],
         n_clusters = 10, confidence_min_th = None, is_training = False):
         cluster_prob = self.dcec.model.predict(data["input_X"])[0]
         cluster_pred = np.argmax(cluster_prob, axis=1)

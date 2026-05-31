@@ -9,7 +9,7 @@ from algorithm.ml_xu_personalized import DepressionDetectionAlgorithm_ML_xu_pers
 from data_loader.data_loader_ml import DatasetDict, DataRepo
 from utils.cv_split import judge_corner_cvsplit
 from utils import path_definitions
-from tensorflow.python.data.ops.dataset_ops import FlatMapDataset
+from tensorflow.data import Dataset
 
 def calc_cv_oneloop(clf: DepressionDetectionClassifierBase, data_repo: DataRepo, random_seed_index: int,
     n_splits:int = 20) -> Dict[str, List[float]]:
@@ -412,10 +412,10 @@ def two_datasets_model(dataset_train: DatasetDict, dataset_test_dict: Dict[str,D
     clf_train.fit(X=data_repo_train.X,y=data_repo_train.y)
     end2 = time.time()
 
-    if type(data_repo_train.X) is FlatMapDataset:
+    if type(data_repo_train.X) is Dataset:
         data_repo_train_eval = algorithm.prep_data_repo(dataset_train, flag_train=False)
     elif type(data_repo_train.X) is dict:
-        if ("val_whole" in data_repo_train.X and type(data_repo_train.X["val_whole"]) is FlatMapDataset):
+        if ("val_whole" in data_repo_train.X and type(data_repo_train.X["val_whole"]) is Dataset):
             data_repo_train_eval = algorithm.prep_data_repo(dataset_train, flag_train=False)
         else:
             raise ValueError
