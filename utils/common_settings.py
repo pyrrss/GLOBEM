@@ -71,7 +71,7 @@ robust_scaler = RobustScaler()
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 import tensorflow as tf
-import tensorflow_addons as tfa
+# import tensorflow_addons as tfa
 
 from tensorflow import keras
 from tensorflow.python.keras import backend as K
@@ -84,7 +84,7 @@ from tensorflow.keras.callbacks import EarlyStopping, LearningRateScheduler, Mod
 
 from tensorflow.keras.layers import Layer, Input, Activation, Lambda, Flatten, Concatenate, add, Average
 from tensorflow.keras.layers import BatchNormalization, LayerNormalization
-from tensorflow_addons.layers import InstanceNormalization
+# from tensorflow_addons.layers import InstanceNormalization
 from tensorflow.keras.layers import Conv1D, Conv2D, ZeroPadding2D, MaxPooling1D, MaxPooling2D, Dense, Dropout, GlobalAveragePooling1D, Cropping2D
 from tensorflow.keras.layers import LSTM, Bidirectional, TimeDistributed
 from tensorflow.keras.layers import UpSampling1D, UpSampling2D, Reshape, Conv1DTranspose, Conv2DTranspose, InputSpec
