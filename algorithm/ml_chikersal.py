@@ -523,7 +523,7 @@ class BaseRandomizedLinearModel(six.with_metaclass(ABCMeta, BaseEstimator,
         estimator_func, params = self._make_estimator_and_params(X, y)
         memory = self.memory
         if isinstance(memory, six.string_types):
-            memory = Memory(cachedir=memory)
+            memory = Memory(location=memory)
 
         scores_ = memory.cache(
             _resample_model, ignore=['verbose', 'n_jobs', 'pre_dispatch']
@@ -676,7 +676,7 @@ class RandomizedLogisticRegression(BaseRandomizedLinearModel):
                  normalize=True,
                  random_state=None,
                  n_jobs=1, pre_dispatch='3*n_jobs',
-                 memory=Memory(cachedir=None, verbose=0)):
+                 memory=Memory(location=None, verbose=0)):
         self.C = C
         self.scaling = scaling
         self.sample_fraction = sample_fraction
