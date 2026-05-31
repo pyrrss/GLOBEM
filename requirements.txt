@@ -16,7 +16,6 @@ six
 statsmodels
 swifter
 tensorflow_cpu
-tensorflow_addons
 torch
 torchvision
 tqdm
