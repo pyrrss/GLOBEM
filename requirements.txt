@@ -15,13 +15,9 @@ seaborn
 six
 statsmodels
 swifter
-tensorflow_cpu
 torch
 torchvision
 tqdm
 typeguard
 wget
 protobuf
-ray 
-modin 
-swifter
