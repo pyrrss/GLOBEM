@@ -3,7 +3,7 @@ from typing import List, Dict
 sys.path.append("../")
 sys.path.append("../../")
 from common_settings import *
-from tensorflow.python.data.ops.dataset_ops import FlatMapDataset
+from tensorflow.python.data.ops.dataset_ops import Dataset
 
 #### Model Architecture Definition
 
@@ -302,7 +302,7 @@ def prep_model_optimizer(training_params: Dict[str, float]):
 class EvaluationBasicCallback(Callback):
     """A callback function to evaluate model performance on a pre-defined datasets"""
     def __init__(self, model_obj: Model,
-            dataset_train:FlatMapDataset, dataset_test:FlatMapDataset=None,
+            dataset_train:FlatMapDataset, dataset_test:Dataset=None,
             interval:int=1, verbose:int=1, flag_skip_y_defition:bool=False):
         super(Callback, self).__init__()
         self.interval = interval
